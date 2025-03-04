@@ -4,11 +4,15 @@ import pandas as pd
 import difflib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import uvicorn
+from dotenv import load_dotenv
+import os
 
 app = FastAPI()
 
 # ------------------ MongoDB Connection ------------------
-client = pymongo.MongoClient("mongodb://localhost:27017/")
+mongodb_uri = os.getenv("MONGODB_URI")
+client = pymongo.MongoClient(mongodb_uri)
 db_freelancer = client["Freelancer"]
 db_jobs = client["Jobs"]
 
