@@ -64,6 +64,14 @@ def get_recommendations(job_title, skill_weight=0.6, rating_weight=0.3, review_w
     return recommended[["tags", "client_average_rating", "client_review_count", "final_score"]].to_dict(orient="records")
 
 # ------------------ API Endpoint ------------------
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, FastAPI!"}
+
 @app.get("/recommend/{job_title}")
 def recommend(job_title: str):
     recommendations = get_recommendations(job_title)
