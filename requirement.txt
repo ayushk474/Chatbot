@@ -1,0 +1,6 @@
+fastapi
+pymongo
+pandas
+scikit-learn
+uvicorn
+streamlit
