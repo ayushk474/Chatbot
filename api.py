@@ -8,7 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 app = FastAPI()
 
 # ------------------ MongoDB Connection ------------------
-client = pymongo.MongoClient("your-mongodb-atlas-connection-string")
+client = pymongo.MongoClient("mongodb://localhost:27017/")
 db_freelancer = client["Freelancer"]
 db_jobs = client["Jobs"]
 
