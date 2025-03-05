@@ -1,6 +1,11 @@
 fastapi
-pymongo
-pandas
-scikit-learn
 uvicorn
-streamlit
+requests
+jsonschema
+numpy
+faiss-cpu
+langchain
+langchain-community
+langchain-huggingface
+tenacity
+pydantic
