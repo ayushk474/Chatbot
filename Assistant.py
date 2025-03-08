@@ -20,8 +20,10 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Load Hugging Face API Key
-from secret_api_keys import huggingface_api_key
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = huggingface_api_key
+huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+if not huggingface_api_key:
+    raise ValueError("HUGGINGFACEHUB_API_TOKEN is not set in environment variables")
+
 
 # MongoDB Connection
 MONGO_URI = "mongodb://localhost:27017"
@@ -147,3 +149,7 @@ async def chat(query_request: QueryRequest):
         response = query_model(llm, retriever, query_request.query)
 
     return {"response": response}
+import uvicorn
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=10000)
