@@ -19,12 +19,11 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# 🔹 Load Hugging Face API Key
-from secret_api_keys import huggingface_api_key
-os.environ['HUGGINGFACEHUB_API_TOKEN'] = huggingface_api_key
+# Load Hugging Face API Key
+huggingface_api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 if not huggingface_api_key:
-    raise ValueError("HUGGINGFACEHUB_API_TOKEN is not set!")
-
+    raise ValueError("HUGGINGFACEHUB_API_TOKEN is not set in environment variables")
+    
 # 🔹 MongoDB Connection
 MONGO_URI = "mongodb+srv://ayushk47:A1234@assistant.w3yor.mongodb.net/?retryWrites=true&w=majority&appName=Assistant"
 DB_NAME = "Task"
